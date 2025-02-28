@@ -20,7 +20,7 @@ const data = [
       "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
     name: "Pablo Marçal",
     function: "Front-end",
-    date: "01/03/2022",
+    date: "2021-03-01T00:00:00.000Z",
     phone: "5551234567890",
   },
   {
@@ -28,7 +28,7 @@ const data = [
       "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
     name: "Lula Inácio",
     function: "Front-end",
-    date: "20/09/2015",
+    date: "2021-05-01T00:00:00.000Z",
     phone: "5585912341234",
   },
   {
@@ -36,7 +36,7 @@ const data = [
       "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
     name: "Janja",
     function: "Back-end",
-    date: "01/03/2011",
+    date: "2020-06-20T00:00:00.000Z",
     phone: "5585912341102",
   },
 ];
@@ -80,6 +80,7 @@ export function EmployeeTable({ searchParam }: { searchParam: string }) {
       <TableBody className="h3">
         {dadosFiltrados?.map((employe) => {
           const phoneNumber = formatPhoneNumber(employe.phone);
+          const date = new Date(employe.date).toLocaleDateString();
           return (
             <Disclosure>
               <DisclosureButton
@@ -102,7 +103,7 @@ export function EmployeeTable({ searchParam }: { searchParam: string }) {
                   {employe.function}
                 </TableCell>
                 <TableCell className="hidden md:table-cell text-left">
-                  {employe.date}
+                  {date}
                 </TableCell>
                 <TableCell className="hidden md:table-cell text-left">
                   {phoneNumber}
@@ -121,7 +122,7 @@ export function EmployeeTable({ searchParam }: { searchParam: string }) {
                   </div>
                   <div className="flex m-litle-4 justify-between text-center border-b border-dashed border-b-gray-20 leading-3.5">
                     <span className="">Data de admissão</span>
-                    <span className="">{employe.date}</span>
+                    <span className="">{date}</span>
                   </div>
                   <div className="flex m-litle-4 justify-between text-center border-b border-dashed border-b-gray-20 leading-3.5">
                     <span className="">Telefone</span>
