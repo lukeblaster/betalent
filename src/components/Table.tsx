@@ -12,43 +12,31 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import { formatPhoneNumber } from "@/scripts/format-phone-number";
+import { formatPhone } from "@/scripts/format-phone";
 
-const data = [
-  {
-    photoUrl:
-      "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
-    name: "Pablo Marçal",
-    function: "Front-end",
-    date: "2021-03-01T00:00:00.000Z",
-    phone: "5551234567890",
-  },
-  {
-    photoUrl:
-      "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
-    name: "Lula Inácio",
-    function: "Front-end",
-    date: "2021-05-01T00:00:00.000Z",
-    phone: "5585912341234",
-  },
-  {
-    photoUrl:
-      "https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg",
-    name: "Janja",
-    function: "Back-end",
-    date: "2020-06-20T00:00:00.000Z",
-    phone: "5585912341102",
-  },
-];
+type Employee = {
+  id: string;
+  name: string;
+  job: string;
+  admission_date: string;
+  phone: string;
+  image: string;
+};
 
-export function EmployeeTable({ searchParam }: { searchParam: string }) {
-  const dadosFiltrados = data.filter((item) => {
-    const filtroLower = searchParam.toLowerCase();
+export function EmployeeTable({
+  employesData,
+  searchParam,
+}: {
+  employesData: Employee[];
+  searchParam: string;
+}) {
+  const filteredData = employesData.filter((employee) => {
+    const lowerFilter = searchParam.toLowerCase();
     return (
-      item.name.toLowerCase().includes(filtroLower) ||
-      item.function.toLowerCase().includes(filtroLower) ||
-      item.date.toLowerCase().includes(filtroLower) ||
-      item.phone.toLowerCase().includes(filtroLower)
+      employee.name.toLowerCase().includes(lowerFilter) ||
+      employee.job.toLowerCase().includes(lowerFilter) ||
+      employee.admission_date.toLowerCase().includes(lowerFilter) ||
+      employee.phone.toLowerCase().includes(lowerFilter)
     );
   });
 
@@ -78,29 +66,29 @@ export function EmployeeTable({ searchParam }: { searchParam: string }) {
         </TableRow>
       </TableHeader>
       <TableBody className="h3">
-        {dadosFiltrados?.map((employe) => {
-          const phoneNumber = formatPhoneNumber(employe.phone);
-          const date = new Date(employe.date).toLocaleDateString();
+        {filteredData?.map((employee) => {
+          const phoneNumber = formatPhone(employee.phone);
+          const date = new Date(employee.admission_date).toLocaleDateString();
           return (
-            <Disclosure>
+            <Disclosure key={employee.id}>
               <DisclosureButton
                 className="w-full border-b border-b-gray-20 group not-md:data-[open]:border-none transition duration-150 ease-in-out *:px-regular-16 *:py-litle-8 last:border-none"
                 as="tr"
               >
                 <TableCell className="p-0">
                   <img
-                    src={employe.photoUrl}
+                    src={employee.image}
                     className="w-[34px] h-[34px] rounded-full"
                   />
                 </TableCell>
-                <TableCell className="text-left">{employe.name}</TableCell>
+                <TableCell className="text-left">{employee.name}</TableCell>
                 <TableCell className="md:hidden items-center">
                   <div className="flex justify-end">
                     <ChevronDown className="text-blue-primary text-right flex items-end w-[32px] h-[32px] stroke-[1.5px] transition duration-150 group-data-[open]:rotate-180" />
                   </div>
                 </TableCell>
                 <TableCell className="hidden md:table-cell text-left">
-                  {employe.function}
+                  {employee.job}
                 </TableCell>
                 <TableCell className="hidden md:table-cell text-left">
                   {date}
@@ -118,7 +106,7 @@ export function EmployeeTable({ searchParam }: { searchParam: string }) {
                 <div className="flex flex-col gap-3 my-regular-16 px-regular-16 py-litle-8 text-black font-medium">
                   <div className="flex m-litle-4 justify-between text-center border-b border-dashed border-b-gray-20 leading-3.5">
                     <span className="">Cargo</span>
-                    <span className="">{employe.function}</span>
+                    <span className="">{employee.job}</span>
                   </div>
                   <div className="flex m-litle-4 justify-between text-center border-b border-dashed border-b-gray-20 leading-3.5">
                     <span className="">Data de admissão</span>
