@@ -1,3 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-55");
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -10,15 +11,7 @@
   font-weight: 200 700;
   font-display: swap;
   src: url("/fonts/HelveticaNeueMedium.otf") format("otf");
-}
-
-@font-face {
-  font-family: "Helvetica Neue Roman";
-  font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-  src: url("/fonts/HelveticaNeueRoman.otf") format("opentype-font");
-} */
+}*/
 
 @theme {
   /* Colors */
@@ -43,9 +36,10 @@
   --spacing-litle-4: 4px;
 
   /* Tipography */
-  --font-helvetica: "Helvetica";
+  --font-helvetica: "Helvetica Neue";
+  /* --font-bolder: 900;
   --font-medium: 500;
-  --font-regular: 400;
+  --font-regular: 400; */
   --text-20: 20px;
   --text-16: 16px;
 
@@ -55,7 +49,7 @@
 }
 
 #root {
-  font-family: "Helvetica";
+  font-family: "Helvetica Neue";
   color-scheme: light dark;
   color: #222222;
   background-color: var(--gray-00);
@@ -63,19 +57,19 @@
 
 .h1 {
   font-family: var(--font-helvetica);
-  font-weight: var(--font-medium);
+  font-weight: 500;
   font-size: var(--text-20);
 }
 
 .h2 {
   font-family: var(--font-helvetica);
-  font-weight: var(--font-medium);
+  font-weight: 500;
   font-size: var(--text-16);
 }
 
 .h3 {
   font-family: var(--font-helvetica);
-  font-weight: var(--font-regular);
+  font-weight: 400;
   font-size: var(--text-16);
 }
 
