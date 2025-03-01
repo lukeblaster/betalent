@@ -1,50 +1,22 @@
-# React + TypeScript + Vite
+# Teste Técnico Front-end BeTalent
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto faz parte do processo de testes técnicos da BeTalent para Desenvolvedor Front-end. Este repositório disponibiliza uma visualização responsiva de dados de funcionários.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tenha instaladas em sua máquina as ferramentas [Node.js](https://nodejs.org/en/) e [Yarn](https://yarnpkg.com/) (ou outro gerenciador de pacotes de sua preferência) para poder trabalhar no projeto.
 
-## Expanding the ESLint configuration
+### Como rodar o projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Caso você não tenha, instale o pacote [json-server](https://github.com/typicode/json-server);.
+2. Acesse a pasta ```db```, execute o comando `npx json-server db.json` ou 
+com `yarn json-server <path>/db.json`, em que `<path>` é o caminho completo até o diretório em que o arquivo db.json está localizado. Se mesmo assim não funcionar, busque ajuda na web.
+3. Acesse a pasta ```frontend``` e inicie o projeto usando o comando ```yarn dev``` ou outro equivalente.
+4. Acesse a url ```http://localhost:5173```.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Tecnologias utilizadas
+- Vite
+- React
+- TypeScript
+- TailwindCSS
+- HeadlessUI
